@@ -28,6 +28,8 @@ class ActivitySection extends Entry
 
     protected bool|Closure|null $isHeadingVisible = null;
 
+    protected bool|Closure $isCompact = false;
+
     public function description(string|Closure|null $description = null): static
     {
         $this->description = $description;
@@ -38,6 +40,13 @@ class ActivitySection extends Entry
     public function aside(bool|Closure|null $condition = true): static
     {
         $this->isAside = $condition;
+
+        return $this;
+    }
+
+    public function compact(bool|Closure $condition = true): static
+    {
+        $this->isCompact = $condition;
 
         return $this;
     }
@@ -80,6 +89,11 @@ class ActivitySection extends Entry
     public function isAside(): bool
     {
         return (bool) ($this->evaluate($this->isAside) ?? false);
+    }
+
+    public function isCompact(): bool
+    {
+        return (bool) $this->evaluate($this->isCompact);
     }
 
     public function getDescription(): ?string

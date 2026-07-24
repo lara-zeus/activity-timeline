@@ -80,6 +80,7 @@ public function activityTimelineInfolist(Infolist $infolist): Infolist
                 ->showItemsIcon('heroicon-m-chevron-down') // Show button icon
                 ->showItemsColor('gray') // Show button color and it supports all colors
                 ->aside(true)
+                ->compact() // remove section card chrome when nested in another container
                 ->headingVisible(true) // make heading visible or not
                 ->extraAttributes(['class'=>'my-new-class']) // add extra class
         ]);
